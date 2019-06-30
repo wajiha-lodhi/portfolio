@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v3.8.5">
-        <title>Wajiha's Blog</title>
+        <title>{{ blog.title }}</title>
         <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
         <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -38,29 +38,21 @@
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="#">Twitter</a>
           <a class="nav-item nav-link" href="{% static 'abc.pdf' %}">Resume</a>
-          <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
         </div>
       </div>
     </nav>
     </header>
     <main role="main">
-      <section class="jumbotron">
         <div class="container">
-            <h1 class="text-center pt-3">Welcome to Wajiha's Blog.</h1>
-            <h2>Latest Blogs</h2>
-        </div>
-      </section>
-              {% for post in post.all %}
-        <div class="container">
-        <a style="color:black;" href="{% url 'detail' post.id%}"> <h4>{{ post.title }}</h4> </a>
-            <p class="blockquote-footer">{{ post.pub_date_pretty }}</p>
-                <img class="img-fluid" width="300" height="250" src="{{ post.image.url }}">
-                  <p>{{ post.summary }}</p>
-                  <a class="btn btn-primary" href="{% url 'detail' post.id%}" role="button">View</a>
+             <h1 class="text-center pt-3">{{ blog.title }}</h1>
+            <p class="blockquote-footer text-center">{{ blog.pub_date }}</p>
+                <img class="img-fluid" width="600" height="450" src="{{ blog.image.url }}">
+                  <p>{{ blog.body }}</p>
+                  <a class="btn btn-primary" href="{% url 'allblogs' %}" role="button">Go to the Blog Page.</a>
                   <br>
                   <br>
                 </div>
-              {% endfor %}
     </main>
     <footer class="text-muted">
       <div class="container">
